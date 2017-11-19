@@ -1,6 +1,9 @@
 @import "../variables";
 
 .header {
-  background: #aaa;
-  padding: $common-paddings;
+  background: $random-bg;
+  padding: $common-padding;
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
 }

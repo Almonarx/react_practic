@@ -2,4 +2,19 @@
 
 body {
   background: $main-bg;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  background: $main-bg;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+          "header header"
+          "sidebar main"
+          "footer footer";
+  grid-gap: 50px;
 }
