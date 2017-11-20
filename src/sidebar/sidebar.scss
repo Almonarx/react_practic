@@ -1,0 +1,8 @@
+@import "../variables";
+
+.sidebar {
+  background: $random-bg;
+  padding: $common-padding;
+  grid-area: sidebar;
+  text-align: center;
+}

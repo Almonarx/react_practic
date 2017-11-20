@@ -1,6 +1,8 @@
 @import "../variables";
 
 .footer {
-  background: #ccc;
-  padding: $common-paddings;
+  background: $random-bg;
+  padding: $common-padding;
+  grid-area: footer;
+  text-align: center;
 }
