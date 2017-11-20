@@ -6,6 +6,6 @@ import { Numbers } from './numbers';
 export const Main = () => (
     <main className="main">
         <p>Main</p>
-        <Numbers from="2" to="9"/>
+        <Numbers from="2" to="9" even/>
     </main>
 );

@@ -2,33 +2,26 @@ import React from 'react';
 import './numbers.scss';
 
 export const Numbers = (props) => {
-    const arr = [];
+    const getNumbers = () => {
+      const arr = [];
 
-    switch (true) {
-        case props.hasOwnProperty('odd'):
-            for (let i = +props.from; i <= +props.to; i++) {
-                if (i % 2) arr.push(i);
-            }
-            break;
+      for (let i = +props.from; i <= +props.to; i++) {
+          arr.push(i);
+      }
 
-        case props.hasOwnProperty('even'):
-            for (let i = +props.from; i <= +props.to; i++) {
-                if (!(i % 2)) arr.push(i);
-            }
-            break;
-
-        default:
-            for (let i = +props.from; i <= +props.to; i++) {
-                arr.push(i);
-            }
-            break;
-    }
-
+      if (props.hasOwnProperty('odd')) {
+          return arr.filter(val => val % 2);
+      } else if (props.hasOwnProperty('even')) {
+          return arr.filter(val => !(val % 2));
+      } else {
+          return arr;
+      }
+    };
 
     return (
         <ul className="numbers">
             {
-                arr.map( (item, i) => (
+                getNumbers().map( (item, i) => (
                     <li key={i}>
                         {item}
                     </li>
