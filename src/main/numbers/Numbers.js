@@ -9,13 +9,10 @@ export const Numbers = (props) => {
           arr.push(i);
       }
 
-      if (props.hasOwnProperty('odd')) {
-          return arr.filter(val => val % 2);
-      } else if (props.hasOwnProperty('even')) {
-          return arr.filter(val => !(val % 2));
-      } else {
-          return arr;
-      }
+      if (props.hasOwnProperty('odd')) return arr.filter(val => val % 2);
+      if (props.hasOwnProperty('even')) return arr.filter(val => !(val % 2));
+
+      return arr;
     };
 
     return (
