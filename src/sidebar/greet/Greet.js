@@ -1,5 +1,4 @@
 import React from 'react';
-import './greet.scss';
 
 export const Greet = (props) => {
     const hour = new Date().getHours();

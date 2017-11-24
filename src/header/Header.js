@@ -7,7 +7,7 @@ export class Header extends Component {
         return (
             <header className="header">
                 Header
-                <Navigation islogin/>
+                <Navigation list={['Home', 'Products', 'Contacts']} />
             </header>
         );
     }
