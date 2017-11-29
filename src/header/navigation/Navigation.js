@@ -1,17 +1,15 @@
-import React from 'react';
 import './navigation.scss';
 
 export const Navigation = ({ list }) => (
-        <nav className="main-nav">
-            <ul>
-                {
-                    list.map((item, i) => (
-                        <li key={i}>
-                            <a href={`/${item.toLocaleLowerCase()}`}>{item}</a>
-                        </li>
-                        )
-                    )
-                }
-            </ul>
-        </nav>
+  <nav className="main-nav">
+    <ul>
+      {
+        list.map((item, i) => (
+          <li key={i}>
+            <a href={`/${item.toLocaleLowerCase()}`}>{item}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 );
