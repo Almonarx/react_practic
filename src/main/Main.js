@@ -9,7 +9,8 @@ export class Main extends React.Component {
     super();
     this.state = {
       users: [],
-      loading: false
+      loading: false,
+      posts: []
     };
   }
 
@@ -25,11 +26,13 @@ export class Main extends React.Component {
   };
 
   showUserInfo = (user) => {
-    alert(`${user.email}: ${user.phone}`);
+    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)
+      .then(response => response.json())
+      .then(posts => this.setState({ posts }));
   };
 
   render() {
-    const { users, loading } = this.state;
+    const { users, loading, posts } = this.state;
 
     return (
       <main className="main">
@@ -43,6 +46,10 @@ export class Main extends React.Component {
           users={users}
           clickHandler={this.showUserInfo}
         />
+        <div>
+          <h2>Posts</h2>
+          {posts.map(post => <p key={post.id}>{post.body}</p>)}
+        </div>
 
         {loading && <span>Loading...</span>}
       </main>
