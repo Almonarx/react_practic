@@ -3,6 +3,7 @@ import './sidebar.scss';
 import { Greet } from './greet';
 import { UsersList } from './usersList';
 import { ShowHide } from './showHide';
+import { Timer } from './timer';
 
 export class Sidebar extends React.Component {
   constructor() {
@@ -20,6 +21,7 @@ export class Sidebar extends React.Component {
       <aside className="sidebar">
         <p>Sidebar</p>
         <Greet name="Taras" />
+        <Timer />
         <UsersList list={this.users} />
         <ShowHide />
       </aside>
