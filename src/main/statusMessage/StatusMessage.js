@@ -4,17 +4,19 @@ const ErrorMessage = props => (
   </mark>
 );
 
-
 const SuccessMessage = props => (
   <mark style={{ color: 'green' }}>
     {props.text || 'Success!'}
-  </mark>
-);
+  </mark>);
 
-export const StatusMessage = props => {
+export const StatusMessage = (props) => {
   if (props.valid) {
-    return <SuccessMessage/>;
+    return <SuccessMessage text={props.text} />;
   }
 
-  return <ErrorMessage/>;
+  return <ErrorMessage />;
+};
+
+StatusMessage.propTypes = {
+  text: PropTypes.string.isRequired
 };

@@ -3,6 +3,13 @@ import './main.scss';
 import { Numbers } from './numbers';
 import { Counter } from './counter';
 import { Persons } from './persons';
+import { Tabs } from '../tabs';
+
+const tabs = [
+  { id: 0, title: 'Tab 1', content: 'Some text is here' },
+  { id: 1, title: 'Tab 2', content: 'Another content' },
+  { id: 2, title: 'Tab 3', content: 'Third text' }
+];
 
 export class Main extends React.Component {
   constructor() {
@@ -52,6 +59,8 @@ export class Main extends React.Component {
         </div>
 
         {loading && <span>Loading...</span>}
+
+        <Tabs tabs={tabs} />
       </main>
     );
   }

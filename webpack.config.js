@@ -14,7 +14,8 @@ const plugins = [
     allChunks: true
   }),
   new webpack.ProvidePlugin({
-    React: 'react'
+    React: 'react',
+    PropTypes: 'prop-types'
   })
 ];
 

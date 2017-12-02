@@ -8,8 +8,8 @@ export class Numbers extends React.Component {
       arr.push(i);
     }
 
-    if ('odd' in this.props) return arr.filter(val => val % 2);
-    if ('even' in this.props) return arr.filter(val => !(val % 2));
+    if (this.props.odd) return arr.filter(val => val % 2);
+    if (this.props.even) return arr.filter(val => !(val % 2));
 
     return arr;
   }
