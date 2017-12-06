@@ -15,7 +15,8 @@ const plugins = [
   }),
   new webpack.ProvidePlugin({
     React: 'react',
-    PropTypes: 'prop-types'
+    PropTypes: 'prop-types',
+    Component: ['react', 'Component']
   })
 ];
 

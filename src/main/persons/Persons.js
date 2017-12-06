@@ -1,5 +1,5 @@
 export const Persons = ({ users, clickHandler }) => (
-  <ul>{(users || []).map(user => (
+  <ul>{users.map(user => (
     <li
       key={user.id}
       onClick={() => clickHandler(user)}
@@ -9,3 +9,8 @@ export const Persons = ({ users, clickHandler }) => (
   ))}
   </ul>
 );
+
+Persons.propTypes = {
+  users: PropTypes.array.isRequired,
+  clickHandler: PropTypes.func.isRequired
+};

@@ -28,3 +28,14 @@ export class Numbers extends React.Component {
     );
   }
 }
+
+Numbers.propTypes = {
+  from: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired
+};

@@ -7,3 +7,5 @@ export const UsersList = props => (
     }
   </ul>
 );
+
+UsersList.propTypes = { list: PropTypes.arrayOf(PropTypes.object).isRequired };

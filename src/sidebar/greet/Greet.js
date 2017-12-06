@@ -28,3 +28,5 @@ export const Greet = (props) => {
     </p>
   );
 };
+
+Greet.propTypes = { name: PropTypes.string.isRequired };
