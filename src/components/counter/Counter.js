@@ -1,4 +1,4 @@
-import { Mount } from './mount';
+import { Mount } from './mount/index';
 
 export class Counter extends React.Component {
   constructor(props) {

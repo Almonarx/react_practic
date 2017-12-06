@@ -1,8 +1,8 @@
-@import "../variables";
+@import "../../variables";
 
-.footer {
+.sidebar {
   background: $random-bg;
   padding: $common-padding;
-  grid-area: footer;
+  grid-area: sidebar;
   text-align: center;
 }

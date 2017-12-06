@@ -1,9 +1,9 @@
 import './sidebar.scss';
 
-import { Greet } from './greet';
-import { UsersList } from './usersList';
-import { ShowHide } from './showHide';
-import { Timer } from './timer';
+import { Greet } from '../../components/greet';
+import { UsersList } from '../../components/usersList';
+import { ShowHide } from '../../components/showHide';
+import { Timer } from '../../components/timer';
 
 export class Sidebar extends React.Component {
   constructor() {

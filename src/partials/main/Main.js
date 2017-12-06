@@ -1,9 +1,9 @@
 import './main.scss';
 
-import { Numbers } from './numbers';
-import { Counter } from './counter';
-import { Persons } from './persons';
-import { Tabs } from '../tabs';
+import { Numbers } from '../../components/numbers';
+import { Counter } from '../../components/counter';
+import { Persons } from '../../components/persons';
+import { Tabs, TabLink, Tab, TabContent } from '../../components/tabs';
 
 const tabs = [
   { id: 0, title: 'Tab 1', content: 'Some text is here' },
@@ -60,7 +60,25 @@ export class Main extends React.Component {
 
         {loading && <span>Loading...</span>}
 
-        <Tabs tabs={tabs} />
+        <Tabs>
+
+          <Tab>
+            <TabLink title="Link 1" />
+            <TabContent>
+              <h1>I am tab 1</h1>
+              <p>Lorem ipsum</p>
+            </TabContent>
+          </Tab>
+
+          <Tab>
+            <TabLink title="Link 2" />
+            <TabContent>
+              <h1>I am tab 2</h1>
+              <p>Lorem ipsum</p>
+            </TabContent>
+          </Tab>
+
+        </Tabs>
       </main>
     );
   }
