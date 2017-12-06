@@ -4,7 +4,7 @@ import { TabContent } from './TabContent';
 export class Tabs extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { content: '', id: 0 };
+    this.state = { content: '' };
   }
 
   componentDidMount() {
@@ -13,8 +13,7 @@ export class Tabs extends React.Component {
 
   clickTab = (id) => {
     this.setState({
-      content: this.props.tabs[id].content,
-      id
+      content: this.props.tabs[id].content
     });
   };
 
@@ -30,3 +29,5 @@ export class Tabs extends React.Component {
     );
   }
 }
+
+Tabs.propTypes = { tabs: PropTypes.arrayOf(PropTypes.object).isRequired };

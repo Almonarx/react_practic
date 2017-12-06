@@ -3,3 +3,5 @@ export const TabContent = ({ content }) => (
     <p>{content}</p>
   </section>
 );
+
+TabContent.propTypes = { content: PropTypes.string.isRequired };

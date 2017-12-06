@@ -13,3 +13,7 @@ export const Navigation = ({ list }) => (
     </ul>
   </nav>
 );
+
+Navigation.propTypes = { list: PropTypes.arrayOf(PropTypes.string) };
+
+Navigation.defaultProps = { list: ['Home', 'Products', 'Contacts'] };
