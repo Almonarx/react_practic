@@ -5,7 +5,7 @@ import './tabs.scss';
 export class Tabs extends Component {
   constructor(props) {
     super(props);
-    this.state = { id: 0 };
+    this.state = { id: this.props.selectedIndex || 0 };
   }
 
   clickTab = id => this.setState({ id });
@@ -19,7 +19,16 @@ export class Tabs extends Component {
     const tabContents = tabs.filter(tab => tab.type === TabContent);
 
     return (
-      <TabNav select={this.clickTab}>{navList}</TabNav>
+      <section className="tab">
+        <TabNav
+          activeIndex={this.state.id}
+          select={this.clickTab}
+        >
+          {navList}
+        </TabNav>
+
+        {tabContents[this.state.id]}
+      </section>
     );
   }
 }

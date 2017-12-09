@@ -59,8 +59,14 @@ module.exports = {
           use: ["css-loader", "sass-loader"]
         })
 
+      },
+
+      {
+        test: /\.(png|jpg|gif|jpeg)$/,
+        exclude: /node_modules/,
+        loader : 'file-loader'
       }
-    ],
+    ]
   },
 
   plugins,
