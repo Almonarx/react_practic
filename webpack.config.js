@@ -2,6 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 const textPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const images = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
 
 const plugins = [
   new HtmlPlugin({
@@ -17,7 +20,15 @@ const plugins = [
     React: 'react',
     PropTypes: 'prop-types',
     Component: ['react', 'Component']
-  })
+  }),
+  new CopyWebpackPlugin([
+    ...images.map(ext => (
+      {
+        from: `**/*/*.${ext}`,
+        to: 'images/[name].[ext]'
+      }
+    ))
+  ])
 ];
 
 module.exports = {
@@ -58,13 +69,6 @@ module.exports = {
           fallback: "style-loader",
           use: ["css-loader", "sass-loader"]
         })
-
-      },
-
-      {
-        test: /\.(png|jpg|gif|jpeg)$/,
-        exclude: /node_modules/,
-        loader : 'file-loader'
       }
     ]
   },

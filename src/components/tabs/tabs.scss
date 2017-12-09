@@ -1,4 +1,8 @@
 .nav-tab {
+  .active button {
+    background: green;
+  }
+
   ul {
     display: flex;
     margin: 0;
