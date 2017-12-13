@@ -48,7 +48,10 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader'
+        loader: 'eslint-loader',
+        options: {
+          emitWarning: true
+        }
       },
 
       {
@@ -67,7 +70,13 @@ module.exports = {
         test: /\.s?css$/,
         use: textPlugin.extract({
           fallback: "style-loader",
-          use: ["css-loader", "sass-loader"]
+          use: [
+            "css-loader",
+            {
+              loader: 'sass-loader',
+              options: { includePaths: ['src'] }
+            }
+          ]
         })
       }
     ]
