@@ -1,15 +1,18 @@
+
 import './main.scss';
 
 import { Persons } from '../../components/persons';
 import { Tabs, TabLink, Tab, TabContent } from '../../components/tabs';
 import { Gallery } from '../../components/gallery';
+import { Form } from '../../components/form';
 
 export class Main extends React.Component {
   constructor() {
     super();
     this.state = {
       users: [],
-      posts: []
+      posts: [],
+      openModal: false
     };
   }
 
@@ -24,6 +27,10 @@ export class Main extends React.Component {
       .then(response => response.json())
       .then(posts => this.setState({ posts }));
   };
+
+  updateModal(isOpen) {
+    this.setState({ openModal: isOpen });
+  }
 
   render() {
     const { users, posts } = this.state;
@@ -54,6 +61,18 @@ export class Main extends React.Component {
           </Tab>
 
         </Tabs>
+
+        <Form />
+
+        {/*<button onClick={() => this.updateModal(true)}>Open</button>
+        <ReactModal
+          isOpen={this.state.openModal}
+          contentLabel="Minimal Modal Example"
+          ariaHideApp={false}
+        >
+          <p>Hello!</p>
+          <button onClick={() => this.updateModal(false)}>Close</button>
+        </ReactModal>*/}
       </main>
     );
   }
