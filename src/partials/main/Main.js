@@ -1,18 +1,17 @@
-
 import './main.scss';
 
 import { Persons } from '../../components/persons';
-import { Tabs, TabLink, Tab, TabContent } from '../../components/tabs';
+import { TaskList, Tabs, TabLink, Tab, TabContent } from '../../components/taskList';
 import { Gallery } from '../../components/gallery';
 import { Form } from '../../components/form';
 
-export class Main extends React.Component {
+export class Main extends Component {
   constructor() {
     super();
     this.state = {
       users: [],
       posts: [],
-      openModal: false
+      /* openModal: false */
     };
   }
 
@@ -28,9 +27,9 @@ export class Main extends React.Component {
       .then(posts => this.setState({ posts }));
   };
 
-  updateModal(isOpen) {
+  /* updateModal(isOpen) {
     this.setState({ openModal: isOpen });
-  }
+  } */
 
   render() {
     const { users, posts } = this.state;
@@ -38,7 +37,6 @@ export class Main extends React.Component {
     return (
       <main className="main">
         <Tabs selectedIndex="0">
-
           <Tab>
             <TabLink title="Link 1" />
             <TabContent>
@@ -59,12 +57,13 @@ export class Main extends React.Component {
               <Gallery />
             </TabContent>
           </Tab>
-
         </Tabs>
+
+        <TaskList />
 
         <Form />
 
-        {/*<button onClick={() => this.updateModal(true)}>Open</button>
+        {/* <button onClick={() => this.updateModal(true)}>Open</button>
         <ReactModal
           isOpen={this.state.openModal}
           contentLabel="Minimal Modal Example"
@@ -72,7 +71,7 @@ export class Main extends React.Component {
         >
           <p>Hello!</p>
           <button onClick={() => this.updateModal(false)}>Close</button>
-        </ReactModal>*/}
+        </ReactModal> */}
       </main>
     );
   }
