@@ -39,7 +39,8 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
 
   module: {
@@ -89,6 +90,7 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    port: 9000
+    port: 9000,
+    historyApiFallback: true
   }
 };

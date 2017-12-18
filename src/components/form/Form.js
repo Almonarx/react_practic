@@ -21,12 +21,13 @@ export class Form extends Component {
     this.setState({ [target.name]: { value: target.value } });
   };
 
-  setFieldState(e, index) {
+  setFieldState = (e, index) => {
     const field = this.fields[index];
     const { name, value } = e.target;
     const stateField = this.state[name];
+    const isRepeatPasswordShown = !this.props.exclude.includes('repeat password');
 
-    if (name.includes('password') && !stateField.error) {
+    if (isRepeatPasswordShown && name.includes('password') && !stateField.error) {
       const fields = this.fields.filter(field => field.label.includes('password'));
       const names = fields.map(field => field.label);
       let error = '';
@@ -39,10 +40,8 @@ export class Form extends Component {
         [names[0]]: Object.assign({}, this.state[names[0]], { error }),
         [names[1]]: Object.assign({}, this.state[names[1]], { error })
       });
-
       return;
     }
-
 
     if (!field.reg.test(value)) {
       stateField.error = `${field.label} is wrong!`;
@@ -51,17 +50,20 @@ export class Form extends Component {
     }
 
     this.setState({ [name]: stateField });
-
-  }
+  };
 
   saveUser = (e) => {
     const data = {};
 
-    for (let key in this.state) {
-      data[key] = this.state[key].value;
-    }
+    this.fields
+      .filter(this.filterExcluded)
+      .forEach((field) => {
+        if (!field.label.includes('repeat')) {
+          data[field.label] = this.state[field.label].value;
+        }
+      });
 
-    console.log(data);
+    this.props.submit(data);
     e.preventDefault();
   };
 
@@ -77,18 +79,23 @@ export class Form extends Component {
     return '';
   };
 
-  getDisabledState = () => {
-    for (let key in this.state) {
-      if (this.state[key].error || this.state[key].error === undefined) {
-        return true;
-      }
-    }
+  getDisabledState = () =>
+    this.fields
+      .filter(this.filterExcluded)
+      .some((field) => {
+        const fieldFromState = this.state[field.label];
 
-    return false;
-  };
+        if (fieldFromState.error || fieldFromState.error === undefined) {
+          return true;
+        }
+      });
+
+
+  filterExcluded = field => !this.props.exclude.find(name => field.label === name);
 
   render() {
-    const { state, fields } = this;
+    const { state, fields, props } = this;
+    const { disabled } = props;
 
     return (
       <form
@@ -96,27 +103,36 @@ export class Form extends Component {
         onSubmit={this.saveUser}
       >
         <ul>
-          {fields.map((field, index) => (
-            <li key={field.label}>
-              <input
-                type={field.secure ? 'password' : 'text'}
-                name={field.label}
-                className={this.getValidClass(state[field.label].error)}
-                placeholder={field.label.toUpperCase()}
-                value={state[field.label].value}
-                onChange={this.handleField}
-                onBlur={e => this.setFieldState(e, index)}
-              />
-              {state[field.label].error && <span>{state[field.label].error}</span>}
-            </li>))}
+          {fields
+            .filter(this.filterExcluded)
+            .map((field, index) => (
+              <li key={field.label}>
+                <input
+                  type={field.secure ? 'password' : 'text'}
+                  name={field.label}
+                  className={this.getValidClass(state[field.label].error)}
+                  placeholder={field.label.toUpperCase()}
+                  value={state[field.label].value}
+                  disabled={disabled.includes(field.label)}
+                  onChange={this.handleField}
+                  onBlur={e => this.setFieldState(e, index)}
+                />
+                {state[field.label].error && <span>{state[field.label].error}</span>}
+              </li>))}
         </ul>
 
         <input
           type="submit"
-          value="Save"
+          value="Ok"
           disabled={this.getDisabledState()}
         />
       </form>
     );
   }
 }
+
+Form.defaultProps = {
+  exclude: [],
+  disabled: [],
+  submit: $ => $
+};

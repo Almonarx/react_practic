@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import './navigation.scss';
 
 export const Navigation = ({ list }) => (
@@ -6,7 +8,12 @@ export const Navigation = ({ list }) => (
       {
         list.map((item, i) => (
           <li key={i}>
-            <a href={`/${item.toLocaleLowerCase()}`}>{item}</a>
+            <NavLink
+              activeClassName="active"
+              to={`/${item.toLocaleLowerCase()}`}
+            >
+              {item}
+            </NavLink>
           </li>
         ))
       }
