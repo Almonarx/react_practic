@@ -2,27 +2,32 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import { TaskList } from '../components/taskList';
 import { Main } from '../partials/main';
-import { Login } from './login';
+import { NotFound } from '../components/notFound';
+import { NotAuthPages } from '../components/notAuthPages';
 
 export class Pages extends Component {
   constructor(props) {
     super(props);
-    this.state = { isLogin: false };
+    this.state = {
+      isLogin: false,
+      isLoading: false
+    };
   }
 
-  onLogin = data => this.setState({ isLogin: true });
+  onLogin = data => {
+    this.setState({ isLoading: true });
+
+    setTimeout(() => {
+      this.setState({ isLogin: true });
+    }, 2000);
+  };
 
   render() {
     if (!this.state.isLogin) {
-      return (
-        <Switch>
-          <Route
-            path="/login"
-            render={() => <Login login={this.onLogin} />}
-          />
-          <Redirect to="/login" />
-        </Switch>
-      );
+      return <NotAuthPages
+        login={this.onLogin}
+        isLoading={this.state.isLoading}
+      />;
     }
 
     return (
@@ -33,7 +38,7 @@ export class Pages extends Component {
 
         <Redirect from="/login" to="/" />
 
-        <Route render={({ location }) => <h1>Requested page "{location.pathname}" not found</h1>} />
+        <Route component={NotFound} />
       </Switch>
     );
   }
