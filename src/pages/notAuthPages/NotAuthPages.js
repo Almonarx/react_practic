@@ -1,8 +1,8 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { Login } from '../../pages/login';
+import { Login } from '../login/index';
 
-export const NotAuthPages = ({login, isLoading}) => (
+export const NotAuthPages = ({ login, isLoading }) => (
   <Switch>
     <Route
       path="/login"

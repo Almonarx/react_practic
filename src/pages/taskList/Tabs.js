@@ -1,4 +1,4 @@
-import { TabContent, Tab, TabLink, TabNav } from './';
+import { TabContent, Tab, TabLink, TabNav } from './index';
 
 import './tabs.scss';
 

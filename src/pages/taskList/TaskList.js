@@ -1,4 +1,4 @@
-import { Task, Tabs, Tab, TabLink, TabContent } from './';
+import { Task, Tabs, Tab, TabLink, TabContent } from './index';
 
 export class TaskList extends Component {
   constructor(props) {

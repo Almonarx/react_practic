@@ -5,7 +5,8 @@
   },
   "globals" : {
     "React": true,
-    "Component": true
+    "Component": true,
+    "$": true
   },
   "rules": {
     "max-len": [2, 120, 2],

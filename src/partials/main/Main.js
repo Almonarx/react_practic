@@ -17,7 +17,7 @@ export class Main extends React.Component {
   render() {
     return (
       <main className="main">
-        <h1>Main</h1>
+        <h1>Main {this.props.name}</h1>
 
         {/* <button onClick={() => this.updateModal(true)}>Open</button>
         <ReactModal
