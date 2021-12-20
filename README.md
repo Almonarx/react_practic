@@ -1,4 +1,4 @@
-# Single page application 'TODO'
+# Single page application
 
 ## How to setup:
 1) Go to root directory and run `npm i`
